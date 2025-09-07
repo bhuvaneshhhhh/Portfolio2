@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhuvanesh Kumar R.V | Software Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        .sidebar {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(0);
+        }
+        @media (max-width: 767px) {
+            .sidebar {
+                transform: translateX(-100%);
+                position: fixed;
+                height: 100%;
+                z-index: 10;
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .nav-link {
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .nav-link.active-link {
+            background-color: #e9ecef;
+            color: #495057;
+        }
+        .nav-link:hover {
+            background-color: #e9ecef;
+        }
+        
+        .pattern-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h1v19H0V0zm19 0h1v19h-1V0zM19 19h1v1h-1v-1zm-19 0h1v1H0v-1z' fill='%23e9ecef'/%3E%3C/svg%3E");
+            background-size: 20px 20px;
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #8B0000 0%, #FF6347 100%);
+        }
+    </style>
+</head>
+<body class="flex flex-col md:flex-row min-h-screen">
+
+    <!-- Mobile Menu Button -->
+    <button id="menu-btn" class="md:hidden fixed top-4 left-4 z-20 p-2 rounded-lg text-gray-800 bg-white shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+    </button>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar md:w-80 w-64 p-6 md:p-8 flex-shrink-0">
+        <div class="flex flex-col items-center mb-10">
+            <div class="w-32 h-32 rounded-full overflow-hidden mb-4">
+                <img src="https://image2url.com/images/1757275300206-5e0f3897-6c29-409d-b747-d3d939985e7b.jpeg" alt="Bhuvanesh Kumar R.V" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-xl font-bold text-gray-900">Bhuvanesh Kumar R.V</h1>
+        </div>
+        <nav class="flex flex-col space-y-2 text-gray-600 font-medium">
+            <a href="#" class="nav-link flex items-center p-3 rounded-lg active-link" data-section="about">
+                <img src="https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824144_1280.png" alt="About icon" class="w-5 h-5 mr-3">
+                About
+            </a>
+            <a href="#" class="nav-link flex items-center p-3 rounded-lg" data-section="experience">
+                <img src="https://www.freeiconspng.com/uploads/blue-circle-handbag-experience-icon-9.png" alt="Experience icon" class="w-5 h-5 mr-3">
+                Experience
+            </a>
+            <a href="#" class="nav-link flex items-center p-3 rounded-lg" data-section="projects">
+                <img src="https://static.vecteezy.com/system/resources/previews/019/856/458/original/project-implementation-line-circle-background-icon-vector.jpg" alt="Projects icon" class="w-5 h-5 mr-3">
+                Projects
+            </a>
+            <a href="#" class="nav-link flex items-center p-3 rounded-lg" data-section="skills">
+                <img src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/graph-circle-blue-512.png" alt="Skills icon" class="w-5 h-5 mr-3">
+                Skills
+            </a>
+            <a href="#" class="nav-link flex items-center p-3 rounded-lg" data-section="education">
+                <img src="https://www.reps.org.nz/wp-content/uploads/2013/01/computerworld_courses_technical_icon-300x300.png" alt="Education icon" class="w-5 h-5 mr-3 rounded-full">
+                Education
+            </a>
+            <a href="#" class="nav-link flex items-center p-3 rounded-lg" data-section="contact">
+                <img src="https://pluspng.com/img-png/outlook-logo-png-clay-os-a-macos-icon-microsoft-outlook-white-message-icon-800x800.jpg" alt="Contact icon" class="w-5 h-5 mr-3 rounded-full">
+                Contact
+            </a>
+            <a href="#" class="nav-link flex items-center p-3 rounded-lg" data-section="resume">
+                <img src="https://tse2.mm.bing.net/th/id/OIP.hfJoRzGvpAGlqaG4nb0ALgHaHa?pid=Api&P=0&h=180" alt="Resume icon" class="w-5 h-5 mr-3 rounded-full">
+                Resume
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow p-4 md:p-12 relative overflow-y-auto pattern-grid">
+        <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 space-y-8">
+            <!-- About Section -->
+            <section id="about" class="content-section active">
+                <div class="header-bg h-24 rounded-t-xl flex items-center pl-6">
+                    <h2 class="text-4xl font-semibold text-white">Hi, I'm Bhuvanesh.</h2>
+                </div>
+                <div class="text-gray-700 space-y-4 px-6 pb-6 mt-6">
+                    <p class="leading-relaxed">I'm an entry-level AI developer with a passion for building intelligent and creative solutions. I am a self-driven, quick starter who is passionate about programming with a curious mind that enjoys solving complex and challenging real-world problems.</p>
+                    <div class="flex items-center space-x-4 mt-6">
+                        <a href="https://linkedin.com/in/bhuvanesh-kumar-r-v-487254377" target="_blank" class="text-gray-900 hover:text-[#8B0000] transition duration-300">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.766s.784-1.767 1.75-1.767 1.75.79 1.75 1.767-.784 1.766-1.75 1.766zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                        </a>
+                        <a href="https://github.com/bhuvaneshhhhhh" target="_blank" class="text-gray-900 hover:text-gray-600 transition duration-300">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.82-.26.82-.577v-2.015c-3.33.725-4.04-1.606-4.04-1.606-.546-1.385-1.33-1.755-1.33-1.755-1.09-.745.08-.73.08-.73 1.21.085 1.84 1.246 1.84 1.246 1.077 1.84 2.82.95 3.5-.547.11-.79.42-1.32.79-1.62-2.67-.3-5.46-1.33-5.46-5.96 0-1.32.47-2.39 1.24-3.23-.12-.3-.545-1.53.11-3.17 0 0 1-.32 3.3 1.22.95-.26 1.96-.39 2.97-.39s2.02.13 2.97.39c2.3-1.54 3.3-1.22 3.3-1.22.655 1.64.23 2.87.11 3.17.77.84 1.24 1.91 1.24 3.23 0 4.64-2.79 5.66-5.46 5.96.42.36.81 1.07.81 2.16v3.19c0 .32.22.69.82.57C20.562 21.8 24 17.302 24 12c0-6.627-5.373-12-12-12z" clip-rule="evenodd"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section id="experience" class="content-section">
+                <div class="header-bg h-24 rounded-t-xl flex items-center pl-6">
+                    <h2 class="text-4xl font-semibold text-white">EXPERIENCE</h2>
+                </div>
+                <div class="space-y-8 px-6 pb-6 mt-6">
+                    <!-- Experience 1 -->
+                    <div class="bg-white border rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900">
+                                <img src="https://image2url.com/images/1757276905124-2ad2b27a-9f6a-48d5-bfef-ca94a0ce9371.png" alt="Xoon Infotech Logo" class="inline-block w-8 h-8 mr-2">
+                                Xoon Infotech
+                            </h3>
+                            <span class="text-sm text-gray-500">Web Developer Intern</span>
+                        </div>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                            <li>Assisted in the development and maintenance of front-end web applications.</li>
+                            <li>Collaborated with senior developers to troubleshoot and debug code.</li>
+                            <li>Gained hands-on experience with HTML, CSS, and JavaScript frameworks.</li>
+                            <li>Contributed to the planning and execution of new feature development.</li>
+                        </ul>
+                        <div class="text-sm text-gray-500 mt-4">August 2025 - Present | Chennai, India</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="content-section">
+                <div class="header-bg h-24 rounded-t-xl flex items-center pl-6">
+                    <h2 class="text-4xl font-semibold text-white">PROJECTS</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 pb-6 mt-6">
+                    <!-- MindMate Project -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="https://image2url.com/images/1757174819346-55076b7d-ef5a-496e-90ed-2425b55abf69.jpeg" alt="MindMate - An AI Journal App" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="text-lg font-semibold text-gray-900">MindMate - An AI Journal App</h3>
+                                <a href="https://bhuvaneshhhhh.github.io/MindMate-Static/" target="_blank" class="text-sm font-semibold bg-[#8B0000] text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-200">VIEW</a>
+                            </div>
+                            <p class="text-sm text-gray-600">A personalized AI journal app where users can choose their feelings of their day and text an entry of what they have in mind and save the process. An AI companion will reply to them regarding their entry, and the user can continue the conversation with the AI. The entries will be saved and can be accessed later.</p>
+                        </div>
+                    </div>
+                    <!-- Pose Right Project -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="https://placehold.co/400x200/e5e7eb/4b5563?text=AR/VR" alt="Pose Right - AR/VR- Based Exercise Pose correction system" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="text-lg font-semibold text-gray-900">Pose Right - AR/VR- Based Exercise Pose correction system</h3>
+                                <button class="text-gray-500 hover:text-gray-800 transition duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M10 6a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600">A real-time exercise pose correction system using AR/VR technologies. This project demonstrates skills in computer vision, motion tracking, and immersive application development.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="content-section">
+                <div class="header-bg h-24 rounded-t-xl flex items-center pl-6">
+                    <h2 class="text-4xl font-semibold text-white">SKILLS</h2>
+                </div>
+                <div class="px-6 pb-6 mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                    <div class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="https://image2url.com/images/1757278758918-24624f64-ebee-4409-90a7-c84bd7db4887.webp" alt="Generative AI Tools Logo" class="w-12 h-12 mb-2">
+                        <span class="text-sm font-medium text-gray-800">Generative AI Tools</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="https://image2url.com/images/1757278798058-4d963161-5299-47bd-a733-d8d03e68b866.jpg" alt="Data Analysis Logo" class="w-12 h-12 mb-2">
+                        <span class="text-sm font-medium text-gray-800">Data Analysis</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="https://image2url.com/images/1757278827951-23605042-cc55-467b-ba0d-3aea4065022a.jpg" alt="Prompt Engineering Logo" class="w-12 h-12 mb-2">
+                        <span class="text-sm font-medium text-gray-800">Prompt Engineering</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="https://image2url.com/images/1757278854302-79cf0f83-715e-42a0-9288-9fdbafab64c1.webp" alt="React.js Logo" class="w-12 h-12 mb-2">
+                        <span class="text-sm font-medium text-gray-800">React.js</span>
+                    </div>
+                     <div class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="https://image2url.com/images/1757278881115-68b2d0b5-2caa-42bc-b709-083e0e9982d7.jpg" alt="Python Logo" class="w-12 h-12 mb-2">
+                        <span class="text-sm font-medium text-gray-800">Python</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="https://image2url.com/images/1757278907899-b2f5e8cf-bd62-433f-b07c-96b6214bd01f.jpeg" alt="LLM Logo" class="w-12 h-12 mb-2">
+                        <span class="text-sm font-medium text-gray-800">LLM</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section id="education" class="content-section">
+                <div class="header-bg h-24 rounded-t-xl flex items-center pl-6">
+                    <h2 class="text-4xl font-semibold text-white">EDUCATION</h2>
+                </div>
+                <div class="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8 px-6 pb-6 mt-6">
+                    <div class="bg-white border rounded-lg shadow p-6 flex-1">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                            <div class="w-12 h-12 rounded-full overflow-hidden inline-block align-middle mr-2">
+                                <img src="https://image2url.com/images/1757277886579-54201fba-a6af-417c-b5c3-a353cccfa67b.png" alt="Panimalar Engineering College Logo" class="w-full h-full object-cover">
+                            </div>
+                            Panimalar Engineering College
+                        </h3>
+                        <span class="text-sm text-gray-500">September 2023 - Present (ends by 2027')</span>
+                        <div class="text-gray-600 mb-4">Chennai, India</div>
+                        <p class="font-medium text-gray-800">Degree: Bachelor of Engineering in Computer Science</p>
+                        <p class="text-gray-600">Current GPA: 7</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="content-section">
+                <div class="header-bg h-24 rounded-t-xl flex items-center pl-6">
+                    <h2 class="text-4xl font-semibold text-white">CONTACT</h2>
+                </div>
+                <div class="flex flex-col space-y-4 px-6 pb-6 mt-6">
+                    <a href="tel:9345165338" class="flex items-center space-x-4 bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition duration-300">
+                        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100">
+                             <img src="https://www.clipartbest.com/cliparts/Kcj/o9G/Kcjo9GnBi.png" alt="Phone icon" class="w-6 h-6">
+                        </div>
+                        <span class="text-lg text-gray-800">9345165338</span>
+                    </a>
+                    <a href="mailto:bhuvaneshkumarrv@gmail.com" class="flex items-center space-x-4 bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition duration-300">
+                        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100">
+                            <img src="https://www.freepnglogos.com/uploads/gmail-email-logo-png-16.png" alt="Email icon" class="w-6 h-6">
+                        </div>
+                        <span class="text-lg text-gray-800">bhuvaneshkumarrv@gmail.com</span>
+                    </a>
+                    <a href="https://github.com/bhuvaneshhhhhh" target="_blank" class="flex items-center space-x-4 bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition duration-300">
+                        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100">
+                            <img src="https://www.pngarts.com/files/8/Github-Logo-PNG-Download-Image.png" alt="GitHub icon" class="w-6 h-6">
+                        </div>
+                        <span class="text-lg text-gray-800">github.com/bhuvaneshhhhhh</span>
+                    </a>
+                    <a href="https://linkedin.com/in/bhuvanesh-kumar-r-v-487254377" target="_blank" class="flex items-center space-x-4 bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition duration-300">
+                        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100">
+                            <img src="https://pngimg.com/uploads/linkedIn/linkedIn_PNG8.png" alt="LinkedIn icon" class="w-6 h-6">
+                        </div>
+                        <span class="text-lg text-gray-800">linkedin.com/in/bhuvanesh-kumar-r-v-487254377</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Resume Section -->
+            <section id="resume" class="content-section">
+                <div class="header-bg h-24 rounded-t-xl flex items-center pl-6">
+                    <h2 class="text-4xl font-semibold text-white">RESUME</h2>
+                </div>
+                <div class="px-6 pb-6 mt-6 text-gray-700">
+                    <p>This page is currently blank. Please check back later for my resume.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.content-section');
+            const menuBtn = document.getElementById('menu-btn');
+            const sidebar = document.getElementById('sidebar');
+
+            const showSection = (sectionId) => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    sections.forEach(s => {
+                        s.classList.remove('active');
+                    });
+                    section.classList.add('active');
+                } else {
+                    console.error(`Section with ID "${sectionId}" not found.`);
+                }
+            };
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const sectionId = e.currentTarget.dataset.section;
+                    showSection(sectionId);
+
+                    navLinks.forEach(navLink => navLink.classList.remove('active-link'));
+                    e.currentTarget.classList.add('active-link');
+
+                    // Close sidebar on mobile after clicking a link
+                    if (window.innerWidth < 768) {
+                        sidebar.classList.remove('open');
+                    }
+                });
+            });
+
+            // Initial section display
+            showSection('about');
+
+            // Handle mobile menu button
+            menuBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+            });
+
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth < 768 && !sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+                    sidebar.classList.remove('open');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
